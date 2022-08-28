@@ -2,11 +2,7 @@ package bnm.bnmapi;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import bnm.bnmapi.UserRepository;
-import bnm.bnmapi.Userdetails;
 import lombok.RequiredArgsConstructor;
-
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 import java.util.Optional;
 @RequiredArgsConstructor
@@ -18,7 +14,7 @@ public class UserService {
 
     @Autowired
     private ProfileRepo profileRepo;
-    UserService(UserRepository userepos){this.userrepos=userrepos;};
+    UserService(UserRepository userepository){this.userrepos=userepository;};
     
     //getAllGroups
     public List<Userdetails> getAll(){

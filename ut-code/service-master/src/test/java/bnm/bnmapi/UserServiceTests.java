@@ -5,6 +5,7 @@ import static org.mockito.Mockito.when;
 import static org.junit.Assert.assertEquals;
 import java.util.Optional;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.Test;
 
 @SpringBootTest
 public class UserServiceTests {
@@ -16,8 +17,8 @@ public class UserServiceTests {
         Userdetails userd=new Userdetails(1,"abc","abc@gmail.com","male","597976757","abc123","abc123");//this is for what should be returned by repo layer
         Optional<Userdetails> userd1=Optional.of(userd);//converting to optional
         when(ur.findByEmailId(any())).thenReturn(userd1);
-        Userdetails user= new Userdetails(1,"abc","abc@gmail.com","male","597976757","abc123","abc123");
-        assertEquals(user,us.getUserByEmailId("abc@gmail.com"));
+        Optional<Userdetails> user= Optional.of(userd);
+        assertEquals(user.get(),us.getUserByEmailId("abc@gmail.com").get());
     }
 /* 
     @Test
