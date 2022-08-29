@@ -20,16 +20,28 @@ public class UserServiceTests {
         Optional<Userdetails> user= Optional.of(userd);
         assertEquals(user.get(),us.getUserByEmailId("abc@gmail.com").get());
     }
-/* 
+
     @Test
-    void testClass1() throws UserNotFoundException{
+    void testClass_GetUserById() throws UserNotFoundException{
         UserRepository ur= mock(UserRepository.class);
         UserService us= new UserService(ur);
         Userdetails userd=new Userdetails(1,"abc","abc@gmail.com","male","597976757","abc123","abc123");
         Optional<Userdetails> userd1=Optional.of(userd);
         when(ur.findByUserId(any())).thenReturn(userd1);
-        Userdetails user= new Userdetails(1,"abc","abc@gmail.com","male","597976757","abc123","abc123");
-        assertEquals(user,us.getUserByUserId(1));
+        Optional<Userdetails> user= Optional.of(userd);
+        assertEquals(user.get(),us.getUserByUserId(1).get());
     }
-*/ 
+
+    @Test
+    void testClass_GetUserByEmailIdAndPassword() throws UserNotFoundException{
+        UserRepository ur= mock(UserRepository.class);
+        UserService us= new UserService(ur);
+        Userdetails userd=new Userdetails(1,"abc","abc@gmail.com","male","597976757","abc123","abc123");
+        Optional<Userdetails> userd1=Optional.of(userd);
+        when(ur.findByEmailIdAndPassword(any(),any())).thenReturn(userd1);
+        Optional<Userdetails> user= Optional.of(userd);
+        assertEquals(user.get(),us.getUserByEmailIdAndPassword("abc@gmail.com","abc123").get());
+    }
+
+
 }

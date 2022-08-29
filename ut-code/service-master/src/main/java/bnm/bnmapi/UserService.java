@@ -28,7 +28,6 @@ public class UserService {
     }
 
 
-
     public Optional<Userdetails> getUserByEmailId(String emailId) throws UserNotFoundException {
         Optional<Userdetails> user= userrepos.findByEmailId(emailId);
 
@@ -76,4 +75,4 @@ public class UserService {
     }
 
 
-    }
+}
