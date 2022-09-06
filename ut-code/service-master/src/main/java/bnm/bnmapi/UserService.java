@@ -52,13 +52,12 @@ public class UserService {
     public Userdetails updateUserByEmailId(String emailId, Userdetails userdetails) throws UserNotFoundException {
 
         Optional<Userdetails> userData = userrepos.findByEmailId(emailId);
-
         if(userrepos.findByEmailId(emailId).isPresent()) {
             Userdetails prev = userData.get();
             prev.setName(userdetails.getName());
 
             prev.setMobile_no(userdetails.getMobile_no());
-//            prev.setPassword(profile.getPassword());
+         //   prev.setPassword(userdetails.getPassword());
             return userrepos.save(prev);
         }
         throw new UserNotFoundException("User not found");

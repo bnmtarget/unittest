@@ -4,15 +4,17 @@ import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.when;
 import static org.junit.Assert.assertEquals;
 import java.util.Optional;
+
+import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.junit.jupiter.api.Test;
 
 @SpringBootTest
 public class UserServiceTests {
 
-    @Test
-    void testClass() throws UserNotFoundException{
-        UserRepository ur= mock(UserRepository.class);//repo class called to define the service function 
+    @org.junit.Test
+    public void testClass() throws UserNotFoundException{
+        UserRepository ur= Mockito.mock(UserRepository.class);//repo class called to define the service function
         UserService us= new UserService(ur);//to call the function of the service layer
         Userdetails userd=new Userdetails(1,"abc","abc@gmail.com","male","597976757","abc123","abc123");//this is for what should be returned by repo layer
         Optional<Userdetails> userd1=Optional.of(userd);//converting to optional
@@ -21,8 +23,8 @@ public class UserServiceTests {
         assertEquals(user.get(),us.getUserByEmailId("abc@gmail.com").get());
     }
 
-    @Test
-    void testClass_GetUserById() throws UserNotFoundException{
+    @org.junit.Test
+    public void testClass_GetUserById() throws UserNotFoundException{
         UserRepository ur= mock(UserRepository.class);
         UserService us= new UserService(ur);
         Userdetails userd=new Userdetails(1,"abc","abc@gmail.com","male","597976757","abc123","abc123");
@@ -32,8 +34,8 @@ public class UserServiceTests {
         assertEquals(user.get(),us.getUserByUserId(1).get());
     }
 
-    @Test
-    void testClass_GetUserByEmailIdAndPassword() throws UserNotFoundException{
+    @org.junit.Test
+    public void testClass_GetUserByEmailIdAndPassword() throws UserNotFoundException{
         UserRepository ur= mock(UserRepository.class);
         UserService us= new UserService(ur);
         Userdetails userd=new Userdetails(1,"abc","abc@gmail.com","male","597976757","abc123","abc123");
@@ -42,6 +44,5 @@ public class UserServiceTests {
         Optional<Userdetails> user= Optional.of(userd);
         assertEquals(user.get(),us.getUserByEmailIdAndPassword("abc@gmail.com","abc123").get());
     }
-
 
 }

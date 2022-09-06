@@ -51,8 +51,8 @@
 		</dependency>
 		<dependency><!--added this for testing-->
 			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>1.9.5</version>
+			<artifactId>mockito-core</artifactId>
+			<version>4.2.0</version>
 		</dependency>
 		<dependency> <!--added this for testing, framework to perform regression testng-->
 			<groupId>org.junit.jupiter</groupId>
